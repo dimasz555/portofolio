@@ -18,44 +18,47 @@ interface ExperienceItem {
 const EXPERIENCES: ExperienceItem[] = [
   {
     id: "1",
-    position: "Backend Developer",
-    company: "PT Tech Innovation",
-    location: "Jakarta, Indonesia",
-    period: "Jan 2024 - Sekarang",
+    position: "IT Staff Programmer",
+    company: "PT Sajada Digital Agency",
+    location: "Pontianak, Indonesia",
+    period: "Februari 2024 - Sekarang",
     description:
-      "Membangun dan mengoptimalkan API RESTful untuk platform e-commerce dengan jutaan transaksi per bulan.",
+      "Mengembangkan web end-to-end, menangani bug di environment production, serta setup dan pengelolaan CI/CD untuk deployment.",
     achievements: [
-      "Merancang arsitektur microservices untuk sistem pembayaran",
-      "Implementasi Redis caching untuk meningkatkan performa 40%",
-      "Integrasi payment gateway dengan multiple provider",
+      "Mengembangkan aplikasi jual beli tanah kavling berbasis web dengan fitur pengelolaan data pelanggan, transaksi, dan pembayaran cicilan.",
+      "Membangun dan mengembangkan aplikasi internal perusahaan menggunakan Laravel dan teknologi pendukungnya.",
+      "Mengimplementasikan fitur absensi, dashboard monitoring, serta modul pengelolaan data sesuai kebutuhan bisnis.",
+      "Melakukan debugging, maintenance, dan optimasi aplikasi pada lingkungan production.",
+      "Menangani proses deployment serta konfigurasi server untuk memastikan aplikasi berjalan dengan baik.",
     ],
   },
   {
     id: "2",
-    position: "Full Stack Developer",
-    company: "Digital Startup Co.",
-    location: "Bandung, Indonesia",
-    period: "Jun 2023 - Des 2023",
+    position: "Magang - Full Stack Developer",
+    company: "UPT Klinik Sungai Bangkong",
+    location: "Pontianak, Indonesia",
+    period: "Maret 2024 - Juni 2024",
     description:
-      "Mengembangkan aplikasi SaaS B2B dari nol dengan fokus pada skalabilitas dan user experience.",
+      "Mengembangkan Sistem Rekam Medis Elektronik serta melakukan analisis dan perbaikan bug untuk meningkatkan stabilitas sistem.",
     achievements: [
-      "Membangun frontend dengan React dan TypeScript",
-      "Develop RESTful API menggunakan Node.js dan Express",
-      "Setup monitoring dan logging dengan ELK stack",
+      "Melakukan wawancara dan analisis kebutuhan dengan pengguna dari berbagai poli untuk mengevaluasi kesesuaian sistem yang berjalan.",
+      "Mengidentifikasi kendala dan bug pada aplikasi berdasarkan hasil analisis serta masukan pengguna.",
+      "Melakukan perbaikan dan pengembangan fitur agar sistem sesuai dengan kebutuhan operasional klinik.",
+      "Melakukan pengujian terhadap perubahan sistem untuk memastikan fitur berjalan sesuai kebutuhan.",
+      "Melakukan maintenance aplikasi dan membantu meningkatkan stabilitas sistem rekam medis elektronik.",
     ],
   },
   {
     id: "3",
-    position: "Backend Engineer",
-    company: "Finance Solutions Ltd.",
-    location: "Remote",
-    period: "Jan 2023 - Mei 2023",
+    position: "Magang - Full Stack Developer",
+    company: "PT Sajada Digital Agency",
+    location: "Pontianak, Indonesia",
+    period: "Mei 2023 - Juli 2023",
     description:
-      "Mengembangkan sistem backend untuk aplikasi fintech dengan standar keamanan tinggi.",
+      "Mengembangkan fitur pada aplikasi internal perusahaan untuk pengelolaan dokumen dan layanan berbasis web.",
     achievements: [
-      "Implementasi OAuth2 dan JWT authentication",
-      "Setup automated testing dengan coverage 85%+",
-      "Performance tuning untuk handle 10k+ concurrent users",
+      "Mengembangkan fitur aplikasi menggunakan Laravel dan teknologi frontend terkait.",
+      "Membantu proses debugging dan optimasi performa aplikasi.",
     ],
   },
 ];
@@ -112,7 +115,7 @@ function TimelineItem({
         <div
           className={cn(
             "flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-background",
-            "shadow-lg shadow-primary/20"
+            "shadow-lg shadow-primary/20",
           )}
         >
           <span
@@ -130,7 +133,7 @@ function TimelineItem({
           className={cn(
             "group rounded-2xl border border-primary/20 bg-card/50 p-6 backdrop-blur-sm",
             "hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10",
-            "transition-all duration-300"
+            "transition-all duration-300",
           )}
         >
           <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
@@ -166,7 +169,9 @@ function TimelineItem({
             {item.achievements.map((achievement, i) => (
               <div key={i} className="flex items-start gap-2">
                 <div className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                <span className="text-sm text-foreground/80">{achievement}</span>
+                <span className="text-sm text-foreground/80">
+                  {achievement}
+                </span>
               </div>
             ))}
           </div>

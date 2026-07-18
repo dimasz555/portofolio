@@ -49,25 +49,25 @@ const techStacks = [
     id: "backend",
     icon: Server,
     label: "Back-End",
-    items: ["Express.js", "Laravel", "REST API", "FastAPI"],
+    items: ["Express.js", "Laravel", "REST API"],
   },
   {
     id: "database",
     icon: Database,
     label: "Database",
-    items: ["MySQL", "PostgreSQL", "Redis"],
+    items: ["MySQL", "PostgreSQL", "Prisma ORM"],
   },
   {
     id: "frontend",
     icon: Monitor,
     label: "Front-End",
-    items: ["Next.js", "React", "Tailwind CSS", "Bootstrap", "HTML"],
+    items: ["Laravel Blade","Next.js", "React", "Tailwind CSS", "Bootstrap", "Livewire"],
   },
   {
     id: "tools",
     icon: Wrench,
     label: "Tools",
-    items: ["Git", "Docker", "CI/CD", "Github Actions", "LangChain"],
+    items: ["Git", "GitHub", "CI/CD", "Github Actions", "Postman"],
   },
 ];
 
