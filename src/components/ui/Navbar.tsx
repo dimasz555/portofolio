@@ -4,10 +4,6 @@ import { useEffect, useState, useContext } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Download,
-  House,
-  FolderOpen,
-  Briefcase,
-  FileText,
   Moon,
   Sun,
 } from "lucide-react";
@@ -23,10 +19,54 @@ interface NavLink {
 
 // Data
 const NAV_LINKS: NavLink[] = [
-  { label: "Beranda", href: "#hero", icon: <House size={16} /> },
-  { label: "Proyek", href: "#projects", icon: <FolderOpen size={16} /> },
-  { label: "Pengalaman", href: "#experience", icon: <Briefcase size={16} /> },
-  { label: "Pendidikan", href: "#education", icon: <FileText size={16} /> },
+  {
+    label: "Beranda",
+    href: "#hero",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        <polyline points="9 22 9 12 15 12 15 22" />
+      </svg>
+    ),
+  },
+  {
+    label: "Proyek",
+    href: "#projects",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+      </svg>
+    ),
+  },
+  {
+    label: "Pengalaman",
+    href: "#experience",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+      </svg>
+    ),
+  },
+  {
+    label: "Pendidikan",
+    href: "#education",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+        <path d="M6 12v5c3 3 9 3 12 0v-5" />
+      </svg>
+    ),
+  },
+  {
+    label: "Kontak",
+    href: "#contact",
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      </svg>
+    ),
+  },
 ];
 
 // Hooks
@@ -83,7 +123,8 @@ function DesktopNav({
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -195,51 +236,54 @@ function DesktopNav({
   );
 }
 
-// Mobile Bottom Nav
 function MobileBottomNav({ active }: { active: string }) {
-  return (
-    <motion.nav
-      initial={{ y: 80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-      aria-label="Mobile navigation"
-      className={cn(
-        "fixed bottom-0 inset-x-0 z-50 md:hidden",
-        "bg-background/85 backdrop-blur-xl",
-        "border-t border-border/40",
-        "pb-[env(safe-area-inset-bottom)]",
-      )}
-    >
-      {/* Contact + Resume row */}
-      <div className="flex items-center justify-between px-5 pt-2.5 pb-1.5">
-        <a
-          href="#contact"
-          onClick={handleNavClick}
-          className={cn(
-            "flex items-center gap-1.5 px-4 py-1.5 rounded-full",
-            "bg-foreground text-background text-xs font-semibold",
-            "hover:bg-primary hover:text-white transition-all duration-200",
-          )}
-        >
-          Hubungi Saya ↗
-        </a>
-        <a
-          href="/cv.pdf"
-          download
-          className={cn(
-            "flex items-center gap-1.5 px-3 py-1.5 rounded-full",
-            "border border-border/60 text-foreground/80 text-xs font-medium",
-            "hover:border-primary/50 hover:text-primary hover:bg-primary/5",
-            "transition-all duration-200",
-          )}
-        >
-          <Download size={12} />
-          Resume
-        </a>
-      </div>
+  const { isDark, setIsDark } = useContext(ThemeContext);
+  const [mounted, setMounted] = useState(false);
 
-      {/* Nav links row */}
-      <ul className="flex items-center justify-around px-2 pb-2">
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <>
+      <motion.button
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
+        onClick={() => setIsDark(!isDark)}
+        className={cn(
+          "fixed top-4 right-4 z-50 md:hidden",
+          "w-11 h-11 rounded-2xl flex items-center justify-center",
+          "bg-background/85 backdrop-blur-xl border border-border/40",
+          "shadow-lg shadow-black/10 transition-all duration-200",
+          "active:scale-95",
+        )}
+        aria-label="Toggle theme"
+      >
+        {!mounted ? (
+          <Moon size={18} className="text-muted-foreground" />
+        ) : isDark ? (
+          <Moon size={18} className="text-primary" />
+        ) : (
+          <Sun size={18} className="text-primary" />
+        )}
+      </motion.button>
+
+      <motion.nav
+        initial={{ y: 80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
+        aria-label="Mobile navigation"
+        className="fixed bottom-4 inset-x-4 z-50 md:hidden"
+      >
+        <ul
+        className={cn(
+          "flex items-center justify-around px-4 py-3",
+          "bg-background/85 backdrop-blur-xl rounded-3xl",
+          "border border-border/40 shadow-lg shadow-black/10",
+        )}
+      >
         {NAV_LINKS.map(({ label, href, icon }) => {
           const isActive = active === href;
           return (
@@ -249,11 +293,11 @@ function MobileBottomNav({ active }: { active: string }) {
                 onClick={handleNavClick}
                 aria-label={label}
                 aria-current={isActive ? "page" : undefined}
-                className="flex flex-col items-center gap-1 py-1.5"
+                className="flex flex-col items-center gap-1.5 py-1"
               >
                 <span
                   className={cn(
-                    "relative flex items-center justify-center w-10 h-7 rounded-full",
+                    "relative flex items-center justify-center w-11 h-9 rounded-2xl",
                     "transition-colors duration-200",
                     isActive ? "text-primary" : "text-muted-foreground",
                   )}
@@ -261,7 +305,7 @@ function MobileBottomNav({ active }: { active: string }) {
                   {isActive && (
                     <motion.span
                       layoutId="mobile-pill"
-                      className="absolute inset-0 rounded-full bg-primary/12"
+                      className="absolute inset-0 rounded-2xl bg-primary/12"
                       transition={{
                         type: "spring",
                         stiffness: 400,
@@ -289,7 +333,8 @@ function MobileBottomNav({ active }: { active: string }) {
           );
         })}
       </ul>
-    </motion.nav>
+      </motion.nav>
+    </>
   );
 }
 

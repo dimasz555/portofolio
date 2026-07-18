@@ -129,7 +129,7 @@ export default function ProjectModal({ project, onClose }: { project: Project; o
             {project.features && project.features.length > 0 && (
               <div className="mb-6">
                 <h3 className="mb-3 text-lg font-semibold text-foreground">
-                  Fitur Utama
+                  Kontribusi
                 </h3>
                 <div className="space-y-2">
                   {project.features.map((feature, index) => (
