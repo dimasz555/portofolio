@@ -170,7 +170,7 @@ export default function Contact() {
 
           <motion.div variants={slideUpVariants} className="text-center">
             <a
-              href="/cv.pdf"
+              href="/CV.pdf"
               download
               className={cn(
                 "inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-semibold text-primary-foreground",
